@@ -1,0 +1,3 @@
+# rive_app
+
+A new Flutter project.
