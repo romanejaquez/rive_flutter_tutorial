@@ -51,8 +51,8 @@ class _MascotButtonState extends State<MascotButton> {
         widget.onAction(widget.action);
       },
       child: SizedBox(
-        width: 300,
-        height: 150,
+        width: 380,
+        height: 120,
         child: anim,
       ),
     );

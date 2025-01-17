@@ -79,6 +79,7 @@ class MascotPage extends StatelessWidget {
                             },
                           )
                         ),
+                        SizedBox(height: 32),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -133,6 +134,15 @@ class MascotPage extends StatelessWidget {
               );
             });
         },
+      ).animate(
+        delay: 1.seconds
+      ).scaleXY(
+        begin: 0.25, end: 1,
+        curve: Curves.elasticInOut,
+        duration: 1.seconds,
+      ).fadeIn(
+        curve: Curves.elasticInOut,
+        duration: 1.seconds,
       ),
     );
   }
