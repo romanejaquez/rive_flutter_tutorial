@@ -1,7 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rive_app/helpers/rive_helper.dart';
 import 'package:rive_app/models/enums.dart';
+import 'package:rive_app/providers/mascot_providers.dart';
 import 'package:rive_app/widgets/mascot.dart';
 import 'package:rive_app/widgets/mascot_hat.dart';
 import 'package:rive_app/widgets/mascot_hat_selection.dart';
@@ -10,28 +14,9 @@ import 'package:rive_app/widgets/mascot_name_form.dart';
 import 'package:rive_app/widgets/mascot_title.dart';
 import 'package:rive_app/widgets/mascotbutton.dart';
 
-class MascotPage extends StatefulWidget {
+class MascotPage extends StatelessWidget {
   const MascotPage({super.key});
 
-  @override
-  State<MascotPage> createState() => _MascotPageState();
-}
-
-class _MascotPageState extends State<MascotPage> {
-
-  late ValueNotifier<MascotActions> action;
-  late ValueNotifier<MascotHatOptions> hat;
-  late ValueNotifier<String> mascotName;
-
-  @override 
-  void initState() {
-    super.initState();
-
-    action = ValueNotifier(MascotActions.none);
-    hat = ValueNotifier(MascotHatOptions.none);
-    mascotName = ValueNotifier(RiveHelper.defaultName);
-  }
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,44 +35,50 @@ class _MascotPageState extends State<MascotPage> {
             ),
           ),
 
-          ValueListenableBuilder(
-            valueListenable: hat,
-            builder: (context, hat, child) {
-            
-              action.value = MascotActions.none;
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Consumer(
+                  builder: (context, ref, child) {
 
-              return ValueListenableBuilder(
-                valueListenable: action,
-                builder: (context, action, child) {
+                    final mascotName = ref.watch(selectedMascotNameProvider);
 
-                  return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                    return MascotTitle(
+                      key: ValueKey(mascotName.hashCode),
+                      name: mascotName,
+                    );
+                  }
+                ),
+                
+                Consumer(
+                  builder: (context, ref, child) {
+
+                    final mascotAction = ref.watch(selectedMascotActionProvider);
+                    final hat = ref.watch(selectedMascotHatProvider);
+
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        ValueListenableBuilder(
-                          valueListenable: mascotName,
-                          builder: (context, name, child) {
-                            return MascotTitle(
-                              key: ValueKey(name.hashCode),
-                              name: name);
-                          }
-                        ),
                         SizedBox(
                           width: MediaQuery.sizeOf(context).width * 0.75,
                           height: 300,
                           child: Mascot(
-                            action: action, hat: hat,
+                            action: mascotAction, 
+                            hat: hat,
                           ),
                         ),
-                  
+                                  
                         SizedBox(height: 32),
                         Center(
                           child: MascotHatSelection(
                             hatOption: hat,
                             onHatSelected: (value) {
-                              this.hat.value = value;
+                              ref.read(selectedMascotHatProvider.notifier).updateHat(value);
+                              ref.read(selectedMascotActionProvider.notifier).updateAction(MascotActions.none);
                             },
                           )
                         ),
@@ -98,12 +89,12 @@ class _MascotPageState extends State<MascotPage> {
                           children: [
                             MascotButton(action: MascotActions.jump,
                               onAction: (action) {
-                                this.action.value = action;
+                                ref.refresh(selectedMascotActionProvider.notifier).updateAction(action);
                               },
                             ),
                             MascotButton(action: MascotActions.wave,
                               onAction: (action) {
-                                this.action.value = action;
+                                ref.refresh(selectedMascotActionProvider.notifier).updateAction(action);
                               },
                             ),
                           ].animate(
@@ -118,13 +109,12 @@ class _MascotPageState extends State<MascotPage> {
                           ),
                         ),
                       ],
-                    ),
-                  );
-                },
-                child: child,
-              );
-            }
-          ),
+                    );
+                  }
+                ),
+              ],
+            ),
+          )
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -133,11 +123,15 @@ class _MascotPageState extends State<MascotPage> {
           showModalBottomSheet(
             context: context,
             builder: (ctxt) {
-              return MascotNameForm(
-                name: mascotName,
-                onUpdatedName: (value) {
-                  mascotName.value = value.isNotEmpty ? value : RiveHelper.defaultName;
-                  Navigator.of(ctxt).pop();
+              return Consumer(
+                builder: (context, ref, child) {
+                  return MascotNameForm(
+                    onUpdatedName: (value) {
+                      ref.read(selectedMascotNameProvider.notifier).updateName(
+                        value.isNotEmpty ? value : RiveHelper.defaultName);
+                      Navigator.of(ctxt).pop();
+                    }
+                  );
                 }
               );
             });

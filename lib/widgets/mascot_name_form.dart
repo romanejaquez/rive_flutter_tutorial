@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:rive_app/models/enums.dart';
 import 'package:rive_app/widgets/mascot_head.dart';
 import 'package:rive_app/widgets/mascot_icon.dart';
+import 'package:rive_app/widgets/mascotbutton.dart';
 
 class MascotNameForm extends StatefulWidget {
 
   final Function(String) onUpdatedName;
-  final ValueNotifier<String> name;
-  const MascotNameForm({super.key, required this.name, required this.onUpdatedName});
+  const MascotNameForm({super.key, required this.onUpdatedName});
 
   @override
   State<MascotNameForm> createState() => _MascotNameFormState();
@@ -63,20 +64,13 @@ class _MascotNameFormState extends State<MascotNameForm> {
                   });
                 },
               ),
-              ElevatedButton.icon(
-                icon: MascotIcon(),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueAccent,
-                  foregroundColor: Colors.white,
-                  padding: EdgeInsets.all(8),
-                  textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)
-                ),
-                onPressed: () {
+
+              MascotButton(
+                action: MascotActions.mascotname,
+                onAction: (value) {
                   widget.onUpdatedName(mascotName);
                 },
-                label: Text('Your Mascot Name'),
               ),
-              const SizedBox(height: 48,)
             ],
           ),
         ),

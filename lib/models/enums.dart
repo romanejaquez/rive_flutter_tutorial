@@ -1,7 +1,8 @@
 enum MascotActions {
   none,
   jump,
-  wave
+  wave,
+  mascotname,
 }
 
 enum MascotHatOptions {

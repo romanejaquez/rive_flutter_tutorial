@@ -40,7 +40,8 @@ class _MascotState extends State<Mascot> {
     ab.addController(ctrl);
     
 
-    for(var action in MascotActions.values.where((a) => a != MascotActions.none)) {
+    final mascotActions = MascotActions.values.where((a) => a != MascotActions.none && a != MascotActions.mascotname).toList();
+    for(var action in mascotActions) {
       actionMap[action] = ctrl.findSMI(action.name) as SMITrigger;
     }
 

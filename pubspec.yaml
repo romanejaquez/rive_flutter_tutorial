@@ -11,11 +11,17 @@ dependencies:
     sdk: flutter
   flutter_animate: ^4.5.2
   rive: ^0.13.20
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  build_runner:
+  custom_lint:
+  riverpod_generator: ^2.6.3
+  riverpod_lint: ^2.6.3
 
 flutter:
   uses-material-design: true
