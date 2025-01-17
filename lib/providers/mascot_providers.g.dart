@@ -40,7 +40,7 @@ final selectedMascotNameProvider =
 
 typedef _$SelectedMascotName = AutoDisposeNotifier<String>;
 String _$selectedMascotActionHash() =>
-    r'f3e9207d0f1d66f2b6f62a185ecad6334e56f7fd';
+    r'a5bb169707329f9b496b71f34f999842989e8161';
 
 /// See also [SelectedMascotAction].
 @ProviderFor(SelectedMascotAction)

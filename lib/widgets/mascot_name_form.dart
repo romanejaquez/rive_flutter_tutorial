@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rive_app/models/enums.dart';
 import 'package:rive_app/widgets/mascot_head.dart';
-import 'package:rive_app/widgets/mascot_icon.dart';
 import 'package:rive_app/widgets/mascotbutton.dart';
 
 class MascotNameForm extends StatefulWidget {
@@ -66,6 +65,7 @@ class _MascotNameFormState extends State<MascotNameForm> {
               ),
 
               MascotButton(
+                label: 'Save Name',
                 action: MascotActions.mascotname,
                 onAction: (value) {
                   widget.onUpdatedName(mascotName);

@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,7 +5,6 @@ import 'package:rive_app/helpers/rive_helper.dart';
 import 'package:rive_app/models/enums.dart';
 import 'package:rive_app/providers/mascot_providers.dart';
 import 'package:rive_app/widgets/mascot.dart';
-import 'package:rive_app/widgets/mascot_hat.dart';
 import 'package:rive_app/widgets/mascot_hat_selection.dart';
 import 'package:rive_app/widgets/mascot_icon.dart';
 import 'package:rive_app/widgets/mascot_name_form.dart';

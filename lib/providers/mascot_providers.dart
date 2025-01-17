@@ -31,7 +31,7 @@ class SelectedMascotName extends _$SelectedMascotName {
 class SelectedMascotAction extends _$SelectedMascotAction {
   @override
   MascotActions build() {
-    return MascotActions.none;
+    return MascotActions.altintro;
   }
 
   void updateAction(MascotActions action) {
