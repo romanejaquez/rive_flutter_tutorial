@@ -2,6 +2,7 @@ enum MascotActions {
   none,
   jump,
   wave,
+  intro,
   mascotname,
 }
 

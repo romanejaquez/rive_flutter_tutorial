@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:rive_app/helpers/rive_helper.dart';
+import 'package:rive_app/models/enums.dart';
 import 'package:rive_app/widgets/mascot.dart';
 import 'package:rive_app/widgets/mascot_title.dart';
 
@@ -63,7 +64,7 @@ class _LandingPageState extends State<LandingPage> {
                   left: 0,
                   right: 0,
                   child: Center(
-                    child: Transform.scale(scale: 1.8, child: Mascot()),
+                    child: Transform.scale(scale: 1.8, child: Mascot(action: MascotActions.intro,)),
                   ),
                 ).animate()
                 .slideY(
