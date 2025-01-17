@@ -80,7 +80,11 @@ class _LandingPageState extends State<LandingPage> {
             );
           }
                 
-          return CircularProgressIndicator.adaptive();
+          return Center(
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation(Colors.blueAccent),
+            ),
+          );
         }
       ),
     );
