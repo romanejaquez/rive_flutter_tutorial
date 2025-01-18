@@ -17,6 +17,42 @@ class MascotPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: null,
+        backgroundColor: Colors.transparent,
+        actions: [
+          IconButton(
+            icon: MascotIcon(),
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (ctxt) {
+                  return Consumer(
+                    builder: (context, ref, child) {
+                      return MascotNameForm(
+                        onUpdatedName: (value) {
+                          ref.read(selectedMascotNameProvider.notifier).updateName(
+                            value.isNotEmpty ? value : RiveHelper.defaultName);
+                          Navigator.of(ctxt).pop();
+                        }
+                      );
+                    }
+                  );
+                });
+            },
+          ).animate(
+            delay: 1.seconds
+          ).scaleXY(
+            begin: 0.25, end: 1,
+            curve: Curves.elasticInOut,
+            duration: 1.seconds,
+          ).fadeIn(
+            curve: Curves.elasticInOut,
+            duration: 1.seconds,
+          ),
+        ],
+      ),
+      extendBodyBehindAppBar: true,
       body: Stack(
         children: [
           Container(
@@ -62,14 +98,14 @@ class MascotPage extends StatelessWidget {
                       children: [
                         SizedBox(
                           width: MediaQuery.sizeOf(context).width * 0.75,
-                          height: 300,
+                          height: 400,
                           child: Mascot(
                             action: mascotAction, 
                             hat: hat,
                           ),
                         ),
                                   
-                        SizedBox(height: 32),
+                        SizedBox(height: 16),
                         Center(
                           child: MascotHatSelection(
                             hatOption: hat,
@@ -79,7 +115,7 @@ class MascotPage extends StatelessWidget {
                             },
                           )
                         ),
-                        SizedBox(height: 32),
+                        SizedBox(height: 16),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -114,35 +150,6 @@ class MascotPage extends StatelessWidget {
             ),
           )
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: MascotIcon(),
-        onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            builder: (ctxt) {
-              return Consumer(
-                builder: (context, ref, child) {
-                  return MascotNameForm(
-                    onUpdatedName: (value) {
-                      ref.read(selectedMascotNameProvider.notifier).updateName(
-                        value.isNotEmpty ? value : RiveHelper.defaultName);
-                      Navigator.of(ctxt).pop();
-                    }
-                  );
-                }
-              );
-            });
-        },
-      ).animate(
-        delay: 1.seconds
-      ).scaleXY(
-        begin: 0.25, end: 1,
-        curve: Curves.elasticInOut,
-        duration: 1.seconds,
-      ).fadeIn(
-        curve: Curves.elasticInOut,
-        duration: 1.seconds,
       ),
     );
   }

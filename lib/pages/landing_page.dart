@@ -23,7 +23,7 @@ class _LandingPageState extends State<LandingPage> {
     super.initState();
 
     pageTimer = Timer(const Duration(seconds: 6), () {
-      Navigator.pushNamed(context, '/mascot');
+      Navigator.pushReplacementNamed(context, '/mascot');
     });
   }
 

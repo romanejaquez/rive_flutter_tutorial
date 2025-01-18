@@ -24,12 +24,12 @@ class MascotHatSelection extends StatelessWidget {
         }
     
         return Container(
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
               color: hat == hatOption ? Colors.blueAccent : Colors.white.withValues(alpha: 0.25),
-              width: 10
+              width: 8
             ),
           ),
           child: MascotHat(
