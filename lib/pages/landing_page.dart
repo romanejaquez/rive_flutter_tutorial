@@ -21,6 +21,12 @@ class _LandingPageState extends State<LandingPage> {
   @override 
   void initState() {
     super.initState();
+
+    // implement any strategy to navigate to the next page
+    // after the Rive assets have loaded
+    pageTimer = Timer(6.seconds, () {
+      Navigator.pushReplacementNamed(context, '/mascot');
+    });
   }
 
   @override  
@@ -35,10 +41,6 @@ class _LandingPageState extends State<LandingPage> {
       body: FutureBuilder(future: RiveHelper.loadRiveFiles(), 
         builder: (context, snapshot) {
           if(snapshot.connectionState == ConnectionState.done){
-
-            pageTimer = Timer(3.seconds, () {
-              Navigator.pushReplacementNamed(context, '/mascot');
-            });
                 
             return Stack(
               children: [
