@@ -21,10 +21,6 @@ class _LandingPageState extends State<LandingPage> {
   @override 
   void initState() {
     super.initState();
-
-    pageTimer = Timer(const Duration(seconds: 6), () {
-      Navigator.pushReplacementNamed(context, '/mascot');
-    });
   }
 
   @override  
@@ -36,9 +32,13 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(future: RiveHelper.loadRive(), 
+      body: FutureBuilder(future: RiveHelper.loadRiveFiles(), 
         builder: (context, snapshot) {
           if(snapshot.connectionState == ConnectionState.done){
+
+            pageTimer = Timer(3.seconds, () {
+              Navigator.pushReplacementNamed(context, '/mascot');
+            });
                 
             return Stack(
               children: [

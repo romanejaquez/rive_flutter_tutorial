@@ -56,19 +56,13 @@ class _MascotNameFormState extends State<MascotNameForm> {
                 maxLines: 1,
                 minLines: 1,
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.black),
-                onChanged: (value) {
-                  setState(() {
-                    nameController.text = value;
-                    mascotName = value;
-                  });
-                },
               ),
 
               MascotButton(
                 label: 'Save Name',
-                action: MascotActions.mascotname,
+                action: MascotActions.name,
                 onAction: (value) {
-                  widget.onUpdatedName(mascotName);
+                  widget.onUpdatedName(nameController.text);
                 },
               ),
             ],

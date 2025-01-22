@@ -26,7 +26,7 @@ class _MascotTitleState extends State<MascotTitle> {
     super.initState();
 
     anim = RiveAnimation.direct(
-      RiveHelper.mainFile!,
+      RiveHelper.miscFile!,
       artboard: 'allbubblestitle',
       fit: BoxFit.contain,
       onInit: onRiveInit,
@@ -39,6 +39,8 @@ class _MascotTitleState extends State<MascotTitle> {
 
     mascotName = ab.textRun('mascotname')!;
     mascotName.text = widget.name;
+
+    
   }
 
   @override

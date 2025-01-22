@@ -28,7 +28,7 @@ class _MascotState extends State<Mascot> {
     super.initState();
 
     anim = RiveAnimation.direct(
-      RiveHelper.mainFile!,
+      RiveHelper.mascotFile!,
       artboard: 'mascot',
       fit: BoxFit.contain,
       onInit: onRiveInit,
@@ -40,7 +40,7 @@ class _MascotState extends State<Mascot> {
     ab.addController(ctrl);
     
 
-    final mascotActions = MascotActions.values.where((a) => a != MascotActions.none && a != MascotActions.mascotname).toList();
+    final mascotActions = MascotActions.values.where((a) => a != MascotActions.none && a != MascotActions.name).toList();
     for(var action in mascotActions) {
       actionMap[action] = ctrl.findSMI(action.name) as SMITrigger;
     }

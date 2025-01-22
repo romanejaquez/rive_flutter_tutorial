@@ -29,7 +29,7 @@ class _MascotButtonState extends State<MascotButton> {
     super.initState();
 
     anim = RiveAnimation.direct(
-      RiveHelper.mainFile!,
+      RiveHelper.buttonsFile!,
       artboard: '${widget.action.name}btn',
       fit: BoxFit.contain,
       onInit: onRiveInit,

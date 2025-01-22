@@ -23,7 +23,7 @@ class _MascotHatState extends State<MascotHat> {
     super.initState();
 
     anim = RiveAnimation.direct(
-      RiveHelper.mainFile!,
+      RiveHelper.mascotFile!,
       artboard: '${widget.hat.name}hat',
       stateMachines: ['${widget.hat.name}hat'],
       fit: BoxFit.fitWidth,

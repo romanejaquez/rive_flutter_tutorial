@@ -11,17 +11,16 @@ class MascotHatSelection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final hatOptions = MascotHatOptions.values.where((h) => h != MascotHatOptions.none).toList();
+
     return Row(
       spacing: 16,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
-      children: List.generate(MascotHatOptions.values.length, (index) {
-        final hat = MascotHatOptions.values[index];
-    
-        if (hat == MascotHatOptions.none) {
-          return const SizedBox.shrink();
-        }
+      children: List.generate(hatOptions.length, (index) {
+        final hat = hatOptions[index];
     
         return Container(
           padding: EdgeInsets.all(8),

@@ -22,7 +22,7 @@ class _MascotHeadState extends State<MascotHead> {
     super.initState();
 
     anim = RiveAnimation.direct(
-      RiveHelper.mainFile!,
+      RiveHelper.mascotFile!,
       artboard: 'titlehead',
       fit: BoxFit.contain,
       onInit: onRiveInit,

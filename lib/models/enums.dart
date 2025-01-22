@@ -4,7 +4,7 @@ enum MascotActions {
   wave,
   intro,
   altintro,
-  mascotname,
+  name,
 }
 
 enum MascotHatOptions {

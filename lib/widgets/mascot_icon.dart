@@ -22,7 +22,7 @@ class _MascotIconState extends State<MascotIcon> {
     super.initState();
 
     anim = RiveAnimation.direct(
-      RiveHelper.mainFile!,
+      RiveHelper.buttonsFile!,
       artboard: 'mascoticon',
       fit: BoxFit.contain,
       onInit: onRiveInit,
