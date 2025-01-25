@@ -4,7 +4,7 @@ Hello! Welcome to Animations With Rive and Flutter - the series!
 
 Video Series => [YouTube](https://www.youtube.com/playlist?list=PL8NTBhIXP2gERbpgjibkJwHBfCPi7GOAs)
 
-!(App Image)[rive_app.png]
+![App Image](rive_app.png)
 
 This is the companion app that we developed during the video series, which covers all topics in the series:
 
