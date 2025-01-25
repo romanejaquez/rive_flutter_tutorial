@@ -4,6 +4,8 @@ Hello! Welcome to Animations With Rive and Flutter - the series!
 
 Video Series => [YouTube](https://www.youtube.com/playlist?list=PL8NTBhIXP2gERbpgjibkJwHBfCPi7GOAs)
 
+Subscribe to the channel => [RomanJustCodes](https://www.youtube.com/@romanjustcodes)
+
 ![App Image](rive_app.png)
 
 This is the companion app that we developed during the video series, which covers all topics in the series:
